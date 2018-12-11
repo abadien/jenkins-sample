@@ -19,6 +19,7 @@ node () {
 	withMaven(maven: 'maven-3.5.4') { 
  			if(isUnix()) {
  				sh "mvn sonar:sonar " 
+			} 
 		}
 	}
 	stage ('App-IC - Post build actions') {
