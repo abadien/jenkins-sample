@@ -9,13 +9,17 @@ node () {
 	}
 	stage ('App-IC - Build') {
  			// Maven build step
-	withMaven(maven: 'maven') { 
+	withMaven(maven: 'maven-3.5.4') { 
  			if(isUnix()) {
  				sh "mvn clean package " 
 			} else { 
  				bat "mvn clean package " 
 			} 
  		} 
+	withMaven(maven: 'maven-3.5.4') { 
+ 			if(isUnix()) {
+ 				sh "mvn sonar:sonar " 
+		}
 	}
 	stage ('App-IC - Post build actions') {
 /*
